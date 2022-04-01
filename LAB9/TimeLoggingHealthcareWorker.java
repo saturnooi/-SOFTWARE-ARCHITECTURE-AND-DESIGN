@@ -16,5 +16,6 @@ public class TimeLoggingHealthcareWorker extends HealthcareWorkerDecorator {
         OffsetDateTime date = OffsetDateTime.now(zoneOffSet);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E MMM dd yyyy HH:mm:ss");  
         System.out.println(dtf.format(date)+" TCT "+ Year.now() + ": ");
+        super.service();
     }
 }
