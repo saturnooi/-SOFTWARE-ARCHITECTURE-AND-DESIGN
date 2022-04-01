@@ -1,6 +1,8 @@
 package edu.parinya.softarchdesign.structural;
-
-import java.util.Date;
+import java.time.format.DateTimeFormatter;  
+import java.time.Year;  
+import java.time.ZoneOffset; 
+import java.time.OffsetDateTime;
 
 public class TimeLoggingHealthcareWorker extends HealthcareWorkerDecorator {
     public TimeLoggingHealthcareWorker(HealthcareWorker worker) {
@@ -10,8 +12,9 @@ public class TimeLoggingHealthcareWorker extends HealthcareWorkerDecorator {
 
     @Override
     public void service() {
-        Date date = new Date();
-        System.out.println(date.toString()+": ");
-        super.service();
+        ZoneOffset zoneOffSet= ZoneOffset.of("+07:00");
+        OffsetDateTime date = OffsetDateTime.now(zoneOffSet);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E MMM dd yyyy HH:mm:ss");  
+        System.out.println(dtf.format(date)+" TCT "+ Year.now() + ": ");
     }
 }
